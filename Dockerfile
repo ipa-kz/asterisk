@@ -3,7 +3,7 @@ FROM alpine:2.6
 
 MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
 
-RUN apk add --update \
+RUN apk add --update sqlodbc asterisk-odbc asterisk-pgsql \
       asterisk \
       asterisk-sample-config \
 && asterisk -U asterisk \
@@ -22,4 +22,5 @@ VOLUME /var/lib/asterisk/sounds /var/lib/asterisk/keys /var/lib/asterisk/phonepr
 
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+#ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
