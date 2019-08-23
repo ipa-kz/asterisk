@@ -1,19 +1,24 @@
 # vim:set ft=dockerfile:
-FROM alpine:2.6
+FROM alpine:3.6
 
 MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
 
 RUN apk add --update sqlodbc asterisk-odbc asterisk-pgsql
+
 RUN apk add --update \
       asterisk \
       asterisk-sample-config \
+&& rm -rf /usr/lib/asterisk/modules/*pjsip* \
 && asterisk -U asterisk \
 && sleep 5 \
 && pkill -9 asterisk \
+&& pkill -9 astcanary \
 && sleep 2 \
 && rm -rf /var/run/asterisk/* \
 && mkdir -p /var/spool/asterisk/fax \
 && chown -R asterisk: /var/spool/asterisk/fax \
+&& truncate -s 0 /var/log/asterisk/messages \
+                 /var/log/asterisk/queue_log \
 &&  rm -rf /var/cache/apk/* \
            /tmp/* \
            /var/tmp/*
