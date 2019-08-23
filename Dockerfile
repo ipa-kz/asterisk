@@ -3,6 +3,9 @@ FROM alpine:2.6
 
 MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
 
+RUN apk add --update less psqlodbc asterisk-odbc asterisk-pgsql \
+&&  rm -rf /var/cache/apk/*
+
 RUN apk add --update \
       asterisk \
       asterisk-sample-config \
@@ -17,8 +20,7 @@ RUN apk add --update \
            /tmp/* \
            /var/tmp/*
 
-#RUN apk add --update less psqlodbc asterisk-odbc asterisk-pgsql \
-#&&  rm -rf /var/cache/apk/*
+
 
 EXPOSE 5060/udp 5060/tcp
 VOLUME /var/lib/asterisk/sounds /var/lib/asterisk/keys /var/lib/asterisk/phoneprov /var/spool/asterisk /var/log/asterisk
