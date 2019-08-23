@@ -3,12 +3,15 @@ FROM alpine:2.6
 
 MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
 
-RUN apk add --update less psqlodbc asterisk-odbc asterisk-pgsql \
-&&  rm -rf /var/cache/apk/*
+#RUN apk add --update less psqlodbc asterisk-odbc asterisk-pgsql \
+#&&  rm -rf /var/cache/apk/*
 
 RUN apk add --update \
       asterisk \
       asterisk-sample-config \
+      psqlodbc \
+      asterisk-odbc \
+      asterisk-pgsq \
 && asterisk -U asterisk \
 && sleep 5 \
 && pkill -9 asterisk \
