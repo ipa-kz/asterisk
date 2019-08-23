@@ -3,7 +3,7 @@ FROM alpine:3.6
 
 MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
 
-ADD mysql-connector-odbc-5.3.13-linux-glibc2.12-x86-32bit.tar.gz /tmp/mysql-connector-odbc-5.3.13-linux-glibc2.12-x86-32bit.tar.gz
+ADD mysql-connector-odbc-5.3.13-linux-glibc2.12-x86-32bit.tar.gz /home/mysql-connector-odbc-5.3.13-linux-glibc2.12-x86-32bit.tar.gz
 
 #RUN apk add --update less psqlodbc asterisk-odbc asterisk-pgsql asterisk-sounds-en \
 #RUN apk add --update asterisk-cdr-mysql \
