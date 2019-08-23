@@ -9,9 +9,6 @@ MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
 RUN apk add --update \
       asterisk \
       asterisk-sample-config \
-      psqlodbc \
-      asterisk-odbc \
-      asterisk-pgsq \
 && asterisk -U asterisk \
 && sleep 5 \
 && pkill -9 asterisk \
@@ -19,11 +16,12 @@ RUN apk add --update \
 && rm -rf /var/run/asterisk/* \
 && mkdir -p /var/spool/asterisk/fax \
 && chown -R asterisk: /var/spool/asterisk/fax \
+&& apk add --update less psqlodbc asterisk-odbc asterisk-pgsql
 &&  rm -rf /var/cache/apk/* \
            /tmp/* \
            /var/tmp/*
 
-
+#RUN apk add --update less psqlodbc asterisk-odbc asterisk-pgsql
 
 EXPOSE 5060/udp 5060/tcp
 VOLUME /var/lib/asterisk/sounds /var/lib/asterisk/keys /var/lib/asterisk/phoneprov /var/spool/asterisk /var/log/asterisk
