@@ -3,7 +3,8 @@ FROM alpine:3.6
 
 MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
 
-RUN apk add --update sqlodbc asterisk-odbc asterisk-pgsql
+RUN apk add --update less psqlodbc asterisk-odbc asterisk-pgsql \
+&&  rm -rf /var/cache/apk/*
 
 RUN apk add --update \
       asterisk \
