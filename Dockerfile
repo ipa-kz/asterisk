@@ -9,11 +9,11 @@ ADD mysql-connector-odbc-5.3.13-linux-glibc2.12-x86-32bit.tar.gz /tmp/mysql-conn
 #RUN apk add --update asterisk-cdr-mysql \
 #&&  rm -rf /var/cache/apk/*
 
-RUN apk add --update asterisk-cdr-mysql psqlodbc asterisk-odbc \
-&&  apk add mysql-connector-odbc --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
-&&  rm -rf /var/cache/apk/*
+#RUN apk add --update asterisk-cdr-mysql psqlodbc asterisk-odbc \
+#&&  apk add mysql-connector-odbc --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
+#&&  rm -rf /var/cache/apk/*
 
-RUN apk add --update \
+RUN apk add --update asterisk-cdr-mysql \
       asterisk \
       asterisk-sample-config \
 && rm -rf /usr/lib/asterisk/modules/*pjsip* \
