@@ -16,7 +16,7 @@ RUN apk add --update \
 && rm -rf /var/run/asterisk/* \
 && mkdir -p /var/spool/asterisk/fax \
 && chown -R asterisk: /var/spool/asterisk/fax \
-&& apk add --update less psqlodbc asterisk-odbc asterisk-pgsql
+&& apk add --update less psqlodbc asterisk-odbc asterisk-pgsql \
 &&  rm -rf /var/cache/apk/* \
            /tmp/* \
            /var/tmp/*
