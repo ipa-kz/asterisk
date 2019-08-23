@@ -25,4 +25,4 @@ VOLUME /var/lib/asterisk/sounds /var/lib/asterisk/keys /var/lib/asterisk/phonepr
 
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
