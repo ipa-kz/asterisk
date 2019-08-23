@@ -12,6 +12,9 @@ MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
 #RUN apk add --update asterisk-cdr-mysql psqlodbc asterisk-odbc \
 #&&  apk add mysql-connector-odbc --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
 #&&  rm -rf /var/cache/apk/*
+RUN apk update
+
+RUN apk add gcc libc-dev g++ libffi-dev libxml2 unixodbc-dev mariadb-dev postgresql-dev
 
 RUN apk add --update asterisk-cdr-mysql \
       asterisk \
