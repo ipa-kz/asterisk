@@ -10,6 +10,7 @@ set -ex
 
 useradd --system asterisk
 
+apt-get update
 apt-get -y install mysql-connector-odbc unixODBC-devel libtool-ltdl-devel
 
 apt-get update -qq
