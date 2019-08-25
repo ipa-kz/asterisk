@@ -1,9 +1,7 @@
-
 #!/bin/sh
 
 # run as user asterisk by default
 ASTERISK_USER=${ASTERISK_USER:-asterisk}
-ASTERISK_GROUP=${ASTERISK_GROUP:-${ASTERISK_USER}}
 
 if [ "$1" = "" ]; then
   COMMAND="/usr/sbin/asterisk -T -W -U ${ASTERISK_USER} -p -vvvdddf"
@@ -16,8 +14,7 @@ if [ "${ASTERISK_UID}" != "" ] && [ "${ASTERISK_GID}" != "" ]; then
   # if they've sent as env variables (i.e. to macth with host user to fix permissions for mounted folders
 
   deluser asterisk && \
-  addgroup -g ${ASTERISK_GID} ${ASTERISK_GROUP} && \
-  adduser -D -H -u ${ASTERISK_UID} -G ${ASTERISK_GROUP} ${ASTERISK_USER} \
+  adduser --gecos "" --no-create-home --uid ${ASTERISK_UID} --disabled-password ${ASTERISK_USER} \
   || exit
 fi
 
