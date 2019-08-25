@@ -14,7 +14,9 @@ EXPOSE 5060/udp 5060/tcp
 VOLUME /var/lib/asterisk/sounds /var/lib/asterisk/keys /var/lib/asterisk/phoneprov /var/spool/asterisk /var/log/asterisk
 
 COPY docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
+#RUN chmod +x /docker-entrypoint.sh
+RUN ["chmod", "+x", "/docker-entrypoint.sh"]
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 #ENTRYPOINT ["bash", "/docker-entrypoint.sh"]
 CMD ["/usr/sbin/asterisk", "-vvvdddf", "-T", "-W", "-U", "asterisk", "-p"]
