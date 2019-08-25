@@ -11,7 +11,17 @@ set -ex
 useradd --system asterisk
 
 apt-get update
-apt-get -y install mysql-connector-odbc unixODBC-devel libtool-ltdl-devel
+apt-get -y install wget 
+wget https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar.gz
+gunzip mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar.gz
+tar xvf mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar
+cd mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit
+cp bin/* /usr/local/bin
+cp lib/* /usr/local/lib
+cd /usr/local/bin/
+myodbc-installer -a -d -n "MySQL ODBC 8.0 Driver" -t "Driver=/usr/local/lib/libmyodbc8w.so"
+myodbc-installer -a -d -n "MySQL ODBC 8.0" -t "Driver=/usr/local/lib/libmyodbc8a.so"
+
 
 apt-get update -qq
 DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --no-install-suggests \
