@@ -8,6 +8,7 @@ ENV ASTERISK_VERSION 13-current
 ENV OPUS_CODEC       asterisk-13.0/x86-64/codec_opus-13.0_current-x86_64
 
 COPY build-asterisk.sh /
+RUN ["chmod", "+x", "/build-asterisk.sh"]
 RUN /build-asterisk.sh
 
 EXPOSE 5060/udp 5060/tcp
