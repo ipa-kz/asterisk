@@ -1,43 +1,18 @@
+    
 # vim:set ft=dockerfile:
-FROM python:3.6-alpine
+FROM debian:stretch-slim
 
-MAINTAINER Andrius Kairiukstis <andrius@kairiukstis.com>
+LABEL maintainer="Andrius Kairiukstis <k@andrius.mobi>"
 
-#ADD mysql-connector-odbc-5.3.13-linux-glibc2.12-x86-32bit.tar.gz home/mysql-connector-odbc-5.3.13-linux-glibc2.12-x86-32bit.tar.gz
+ENV ASTERISK_VERSION 13-current
+ENV OPUS_CODEC       asterisk-13.0/x86-64/codec_opus-13.0_current-x86_64
 
-#RUN apk add --update less psqlodbc asterisk-odbc asterisk-pgsql asterisk-sounds-en \
-#RUN apk add --update asterisk-cdr-mysql \
-#&&  rm -rf /var/cache/apk/*
-
-#RUN apk add --update asterisk-cdr-mysql psqlodbc asterisk-odbc \
-#&&  apk add mysql-connector-odbc --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
-#&&  rm -rf /var/cache/apk/*
-RUN apk update
-
-RUN apk add gcc libc-dev g++ libffi-dev libxml2 unixodbc-dev mariadb-dev postgresql-dev
-
-RUN apk add --update asterisk-cdr-mysql \
-      asterisk \
-      asterisk-sample-config \
-&& rm -rf /usr/lib/asterisk/modules/*pjsip* \
-&& asterisk -U asterisk \
-&& sleep 5 \
-&& pkill -9 asterisk \
-&& pkill -9 astcanary \
-&& sleep 2 \
-&& rm -rf /var/run/asterisk/* \
-&& mkdir -p /var/spool/asterisk/fax \
-&& chown -R asterisk: /var/spool/asterisk/fax \
-&& truncate -s 0 /var/log/asterisk/messages \
-                 /var/log/asterisk/queue_log \
-&&  rm -rf /var/cache/apk/* \
-           /tmp/* \
-           /var/tmp/*
+COPY build-asterisk.sh /
+RUN /build-asterisk.sh
 
 EXPOSE 5060/udp 5060/tcp
 VOLUME /var/lib/asterisk/sounds /var/lib/asterisk/keys /var/lib/asterisk/phoneprov /var/spool/asterisk /var/log/asterisk
 
-ADD docker-entrypoint.sh /docker-entrypoint.sh
-
-#ENTRYPOINT ["/docker-entrypoint.sh"]
-ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["/usr/sbin/asterisk", "-vvvdddf", "-T", "-W", "-U", "asterisk", "-p"]
