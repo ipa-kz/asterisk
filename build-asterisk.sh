@@ -55,7 +55,8 @@ apt-get -y install wget
 #myodbc-installer -a -d -n "MySQL ODBC 8.0 Driver" -t "Driver=/usr/local/lib/libmyodbc8w.so"
 #myodbc-installer -a -d -n "MySQL ODBC 8.0" -t "Driver=/usr/local/lib/libmyodbc8a.so"
 
-wget https://dev.mysql.com/get/Downloads/Connector-ODBC/5.3/mysql-connector-odbc-5.3.13-linux-debian9-x86-64bit.tar.gz
+#wget https://dev.mysql.com/get/Downloads/Connector-ODBC/5.3/mysql-connector-odbc-5.3.13-linux-debian9-x86-64bit.tar.gz
+wget https://github.com/Zhankin/asterisk/raw/master/mysql-connector-odbc-5.3.13-linux-debian9-x86-64bit.tar.gz
 gunzip mysql-connector-odbc-5.3.13-linux-debian9-x86-64bit.tar.gz
 tar xvf mysql-connector-odbc-5.3.13-linux-debian9-x86-64bit.tar
 cp mysql-connector-odbc-5.3.13-linux-debian9-x86-64bit/lib/libmyodbc5* /usr/local/lib
