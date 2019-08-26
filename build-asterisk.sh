@@ -44,7 +44,8 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --no-i
     xmlstarlet
 
 
-apt-get -y install wget nano vim
+apt-get -y install wget nano vim iputils-ping python2.7 python-pip
+pip install smpplib
 #wget https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar.gz
 #gunzip mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar.gz
 #tar xvf mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar
