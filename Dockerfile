@@ -21,4 +21,4 @@ RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 #ENTRYPOINT ["bash", "/docker-entrypoint.sh"]
-CMD ["/usr/sbin/asterisk", "-vvvdddf", "-T", "-W", "-U", "asterisk", "-p"]
+CMD ["/usr/sbin/asterisk", "-vvvdddf", "-T", "-W", "-U", "root", "-p"]
