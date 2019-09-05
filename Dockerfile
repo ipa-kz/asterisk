@@ -19,8 +19,6 @@ COPY docker-entrypoint.sh /
 #RUN chmod +x /docker-entrypoint.sh
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 
-RUN route add -net 10.1.9.0 netmask 255.255.255.0 gw 10.145.82.1 eth1
-
 ENTRYPOINT ["/docker-entrypoint.sh"]
 #ENTRYPOINT ["bash", "/docker-entrypoint.sh"]
 CMD ["/usr/sbin/asterisk", "-vvvdddf", "-T", "-W", "-U", "root", "-p"]
