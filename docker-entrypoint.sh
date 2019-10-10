@@ -3,10 +3,17 @@
 # run as user asterisk by default
 ASTERISK_USER=${ASTERISK_USER:-asterisk}
 
-USERPASS=${USERPASS:-production}
+if [ "$USERPASS" = "**String**" ]; then
+    export USERPASS='production'
+fi
 echo root:${USERPASS} | chpasswd
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-service ssh start
+
+if [ "$SSH_ENABLE" = "**Boolean**" ]; then
+    export SSH_ENABLE=''
+else
+    service ssh start
+fi
 
 if [ "$1" = "" ]; then
   COMMAND="/usr/sbin/asterisk -T -W -U ${ASTERISK_USER} -p -vvvdddf"
