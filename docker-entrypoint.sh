@@ -9,7 +9,7 @@ fi
 echo root:${USERPASS} | chpasswd
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
-if [ "$SSH_ENABLE" = "yes" ]; then
+if [ "$SSH_ENABLE" = "true" ]; then
     service ssh start   
 fi
 
