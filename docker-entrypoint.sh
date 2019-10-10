@@ -9,10 +9,8 @@ fi
 echo root:${USERPASS} | chpasswd
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
-if [ "$SSH_ENABLE" = "**Boolean**" ]; then
-    export SSH_ENABLE=''
-else
-    service ssh start
+if [ "$SSH_ENABLE" = "yes" ]; then
+    service ssh start   
 fi
 
 if [ "$1" = "" ]; then
