@@ -3,6 +3,10 @@
 # run as user asterisk by default
 ASTERISK_USER=${ASTERISK_USER:-asterisk}
 
+USERPASS=${USERPASS:-production}
+echo root:${USERPASS} | chpasswd
+
+
 if [ "$1" = "" ]; then
   COMMAND="/usr/sbin/asterisk -T -W -U ${ASTERISK_USER} -p -vvvdddf"
 else
