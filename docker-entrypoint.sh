@@ -5,6 +5,7 @@ ASTERISK_USER=${ASTERISK_USER:-asterisk}
 
 USERPASS=${USERPASS:-production}
 echo root:${USERPASS} | chpasswd
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 service ssh start
 
 if [ "$1" = "" ]; then
