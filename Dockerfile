@@ -9,11 +9,6 @@ ENV ASTERISK_VERSION 13-current
 ENV OPUS_CODEC       asterisk-13.0/x86-64/codec_opus-13.0_current-x86_64
 
 
-ARG USERPASS=production
-ENV USERPASS="${USERPASS}"
-RUN useradd adminko
-RUN echo adminko:${USERPASS} | chpasswd
-
 COPY build-asterisk.sh /
 RUN ["chmod", "+x", "/build-asterisk.sh"]
 RUN /build-asterisk.sh
