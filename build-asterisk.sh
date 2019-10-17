@@ -48,6 +48,7 @@ apt-get -y install wget nano vim sox iputils-ping python2.7 python-pip net-tools
 pip install smpplib
 pip install pyst2
 pip install requests
+pip install mysql-connector-python
 #wget https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar.gz
 #gunzip mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar.gz
 #tar xvf mysql-connector-odbc-8.0.17-linux-ubuntu16.04-x86-64bit.tar
