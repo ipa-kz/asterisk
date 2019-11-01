@@ -44,7 +44,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --no-i
     xmlstarlet
 
 
-apt-get -y install wget nano vim sox iputils-ping python2.7 python-pip net-tools openssh-server libsox-fmt-mp3
+apt-get -y install wget nano vim sox iputils-ping python2.7 python-pip net-tools openssh-server libsox-fmt-mp3 logrotate
 pip install smpplib
 pip install pyst2
 pip install requests
