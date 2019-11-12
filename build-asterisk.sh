@@ -153,6 +153,5 @@ DEBIAN_FRONTEND=noninteractive apt-get --yes purge \
 rm -rf /var/lib/apt/lists/*
 
 #route add -net 10.1.9.0 netmask 255.255.255.0 gw 10.145.82.1 eth1
-systemctl enable cron
 
 exec rm -f /build-asterisk.sh
