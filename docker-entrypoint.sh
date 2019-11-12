@@ -2,7 +2,7 @@
 
 # run as user asterisk by default
 ASTERISK_USER=${ASTERISK_USER:-asterisk}
-
+systemctl enable cron
 if [ "$USERPASS" = "**String**" ]; then
     export USERPASS='production'
 fi
