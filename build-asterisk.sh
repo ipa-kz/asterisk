@@ -112,15 +112,7 @@ make install
 # copy default configs
 # cp /usr/src/asterisk/configs/basic-pbx/*.conf /etc/asterisk/
 make samples
-
-./configure && \
-    make menuselect.makeopts && \
-    menuselect/menuselect \
-    --enable format_mp3 \
-    menuselect.makeopts && \
-    make && make install && \
-    apt-get clean
-    
+  
 # set runuser and rungroup
 sed -i -E 's/^;(run)(user|group)/\1\2/' /etc/asterisk/asterisk.conf
 
