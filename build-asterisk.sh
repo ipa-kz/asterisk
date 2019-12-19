@@ -91,7 +91,7 @@ menuselect/menuselect --disable BUILD_NATIVE menuselect.makeopts
 menuselect/menuselect --enable BETTER_BACKTRACES menuselect.makeopts
 
 # codecs
-menuselect/menuselect --enable format_mp3 menuselect.makeopts
+#menuselect/menuselect --enable format_mp3 menuselect.makeopts
 # menuselect/menuselect --enable codec_silk menuselect.makeopts
 
 # # download more sounds
@@ -113,6 +113,14 @@ make install
 # cp /usr/src/asterisk/configs/basic-pbx/*.conf /etc/asterisk/
 make samples
 
+./configure && \
+    make menuselect.makeopts && \
+    menuselect/menuselect \
+    --enable format_mp3 \
+    menuselect.makeopts && \
+    make && make install && \
+    apt-get clean
+    
 # set runuser and rungroup
 sed -i -E 's/^;(run)(user|group)/\1\2/' /etc/asterisk/asterisk.conf
 
