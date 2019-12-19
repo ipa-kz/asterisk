@@ -91,7 +91,7 @@ menuselect/menuselect --disable BUILD_NATIVE menuselect.makeopts
 menuselect/menuselect --enable BETTER_BACKTRACES menuselect.makeopts
 
 # codecs
-# menuselect/menuselect --enable codec_opus menuselect.makeopts
+menuselect/menuselect --enable format_mp3 menuselect.makeopts
 # menuselect/menuselect --enable codec_silk menuselect.makeopts
 
 # # download more sounds
